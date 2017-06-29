@@ -46,14 +46,14 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 					response.setHeader("sessionstatus","timeout");
 					return false;
 				}else{
-					String indexUrl=request.getContextPath()+"/login.shtml?msg=您的账号已在其他地方登陆";
+					String indexUrl=request.getContextPath()+"/login.shtml?msg=您的账号已在其他地方登录";
 					request.getRequestDispatcher(indexUrl).forward(request, response);
 					return false;
 				}
 			}
 		}
 		//如果session中没有admin，跳转到登陆页
-		request.getRequestDispatcher(request.getContextPath()+"/login.shtml?msg=登录超时，请重新登陆").forward(request, response);
+		request.getRequestDispatcher(request.getContextPath()+"/login.shtml?msg=登录超时，请重新登录").forward(request, response);
 		return false;
 	}
 }

@@ -96,4 +96,10 @@ class CommonController {
 		}
 		return "redirect:login.shtml";
 	}
+
+	@RequestMapping(value = "home")
+	public String home(){
+
+		return "admin/home";
+	}
 }

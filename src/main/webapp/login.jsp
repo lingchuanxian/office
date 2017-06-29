@@ -35,6 +35,7 @@
                     <input type="text" id="code"/>
                     <div class="value">${code }</div>
                 </div>
+
                 <div class="styleArea">
                     <div class="styleWrap">
                         <select name="style">
@@ -47,7 +48,9 @@
                 <div id="btn" class="loginButton">
                     <input type="button" class="button" value="登录"  />
                 </div>
-                ${msg }
+                <div class="input validate" id="validate1" style="line-height: 39px;text-align: center;color: red;">
+                    ${msg }
+                </div>
             </div>
         </div>
         <div id="ft">CopyRight&nbsp;2017&nbsp;&nbsp;版权所有&nbsp;&nbsp;<a href="javascript:;" target="_blank">fjlcx</a> &nbsp;&nbsp;</div>
