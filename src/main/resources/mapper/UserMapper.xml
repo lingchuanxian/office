@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.fjlcx.office.dao.UserDao" >
+
+  <resultMap type="cn.fjlcx.office.bean.User" id="BaseResultMap">
+    <result column="us_id" property="usId"/>
+    <result column="us_loginname" property="usLoginname"/>
+    <result column="us_head" property="usHead"/>
+    <result column="us_name" property="usName"/>
+    <result column="us_sex" property="usSex"/>
+    <result column="us_phone" property="usPhone"/>
+    <result column="us_mail" property="usMail"/>
+    <result column="us_address" property="usAddress"/>
+    <result column="us_state" property="usState"/>
+    <result column="us_registdate" property="usRegistdate"/>
+  </resultMap>
+
+  <select id="selectAllUser" resultMap="BaseResultMap">
+    SELECT * FROM oa_user
+  </select>
+
+  <select id="selectUserById" parameterType="int" resultMap="BaseResultMap">
+    SELECT * FROM oa_user WHERE us_id = #{us_id}
+  </select>
+
+</mapper>
