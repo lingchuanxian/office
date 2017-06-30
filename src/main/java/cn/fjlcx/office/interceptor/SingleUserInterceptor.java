@@ -36,7 +36,7 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 		Admin admin = (Admin) request.getSession().getAttribute("admin_login_account");
 		if(admin!=null){
 			String sessionid = MemoryData.getSessionIDMap().get(admin.getAdId());
-			//如果用户名存在放心（即登录放行）
+			//如果用户名存在放行（即登录放行）
 			if(sessionid.equals(request.getSession().getId())){
 				return true;
 			}else{ //如果请求的sessionID和此账号Map中存放的sessionID不一致，跳转到登陆页

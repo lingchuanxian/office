@@ -12,6 +12,7 @@ public class Admin implements Serializable {
 	private String adLoginname;
 	private String adPwd;
 	private String adName;
+	private String adMail;
 	private int adType;
 	private int adState;
 	private Date adLastlogindate;
@@ -32,6 +33,14 @@ public class Admin implements Serializable {
 
 	public void setAdLoginname(String adLoginname) {
 		this.adLoginname = adLoginname;
+	}
+
+	public String getAdMail() {
+		return adMail;
+	}
+
+	public void setAdMail(String adMail) {
+		this.adMail = adMail;
 	}
 
 	public String getAdPwd() {
@@ -93,11 +102,12 @@ public class Admin implements Serializable {
 	public Admin() {
 	}
 
-	public Admin(int adId, String adLoginname,String adPwd, String adName, int adType, int adState, Date adLastlogindate, String adLastloginip, Date adAdddate) {
+	public Admin(int adId, String adLoginname, String adPwd, String adName, String adMail, int adType, int adState, Date adLastlogindate, String adLastloginip, Date adAdddate) {
 		this.adId = adId;
 		this.adLoginname = adLoginname;
 		this.adPwd = adPwd;
 		this.adName = adName;
+		this.adMail = adMail;
 		this.adType = adType;
 		this.adState = adState;
 		this.adLastlogindate = adLastlogindate;
