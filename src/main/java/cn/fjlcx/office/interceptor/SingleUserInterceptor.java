@@ -3,10 +3,13 @@ package cn.fjlcx.office.interceptor;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.fjlcx.office.bean.Admin;
+import cn.fjlcx.office.bean.Result;
 import cn.fjlcx.office.global.MemoryData;
 
 /**
@@ -44,6 +47,10 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 				if(request.getHeader("x-requested-with")!=null
 						&& request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){
 					response.setHeader("sessionstatus","timeout");
+					PrintWriter out = response.getWriter();
+					out.write(Result.fail().toString());
+					out.flush();
+					out.close();
 					return false;
 				}else{
 					String indexUrl=request.getContextPath()+"/login.shtml?msg=您的账号已在其他地方登录";
@@ -53,7 +60,7 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 			}
 		}
 		//如果session中没有admin，跳转到登陆页
-		request.getRequestDispatcher(request.getContextPath()+"/login.shtml?msg=登录超时，请重新登录").forward(request, response);
+		request.getRequestDispatcher(request.getContextPath()+"/login.shtml?msg=请先登录").forward(request, response);
 		return false;
 	}
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.fjlcx.office.dao.UserDao" >
+
+  <resultMap type="cn.fjlcx.office.bean.NotePad" id="BaseResultMap">
+    <result column="np_id" property="npId"/>
+    <result column="np_content" property="npContent"/>
+    <result column="np_adddate" property="npAdddate"/>
+    <result column="np_updatedate" property="npUpdatedate"/>
+    <result column="np_state" property="npState"/>
+  </resultMap>
+
+  <insert id="insertNoetPad" parameterType="cn.fjlcx.office.bean.NotePad">
+    INSERT INTO oa_notepad(np_content,np_adddate,np_updatedate,np_state) values(${np_content},#{np_adddate},#{np_updatedate},#{np_state})
+
+  </insert>
+
+</mapper>

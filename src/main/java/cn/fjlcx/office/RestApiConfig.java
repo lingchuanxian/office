@@ -5,13 +5,10 @@ package cn.fjlcx.office;
  */
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -22,27 +19,29 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 		* http://IP:port/{context-path}/swagger-ui.html
 		* eg:http://localhost:8080/jd-config-web/swagger-ui.html
 		*/
+@Configuration
 @EnableWebMvc
 @EnableSwagger2
-@ComponentScan(basePackages = {"cn.fjlcx.office.controller.webservice"})
-@Configuration
-public class RestApiConfig extends WebMvcConfigurationSupport {
+public class RestApiConfig {
 	@Bean
-	public Docket createRestApi() {
+	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("cn.fjlcx.office.controller.webservice"))
-				.paths(PathSelectors.any())
-				.build();
+				.apis(RequestHandlerSelectors.any())
+				.build()
+				.apiInfo(apiInfo());
 	}
+
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Spring MVC中使用Swagger2构建RESTful APIs")
-				.termsOfServiceUrl("http://github.com/smlcx")
-				.contact("story's")
-				.version("1.1")
+				.title("对外开放接口API 文档")
+				.description("HTTP对外开放接口")
+				.version("1.0.0")
+				.termsOfServiceUrl("http://xxx.xxx.com")
+				.license("LICENSE")
+				.licenseUrl("http://xxx.xxx.com")
 				.build();
 	}
+
 }
 

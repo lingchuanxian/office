@@ -19,9 +19,10 @@ $(function () {
                 contentType:"application/json",
                 data:JSON.stringify(data),
                 success:function(data1){
+                    console.log(data1);
                     layer.closeAll('loading');
                     var obj = eval(data1);
-                    if(obj.code!="10000"){
+                    if(obj.code!=100){
                         layer.msg(obj.description);
                     }else{
                         layer.msg(obj.description);
