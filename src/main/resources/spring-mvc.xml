@@ -55,16 +55,6 @@
         <!-- 内存中的最大值 -->
         <property name="maxInMemorySize" value="40960" />  
     </bean>
-
-	<!--&lt;!&ndash; 设置使用注解的类所在的jar包，只加载controller类 &ndash;&gt;-->
-	<bean class="cn.fjlcx.office.RestApiConfig" />
-	<mvc:default-servlet-handler />
-
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
-
-	<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/" />
-	<mvc:resources mapping="/webjars/**"
-				   location="classpath:/META-INF/resources/webjars/" />
-
 </beans>

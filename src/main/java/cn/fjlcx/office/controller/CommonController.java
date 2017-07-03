@@ -6,7 +6,6 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,15 +16,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import cn.fjlcx.office.bean.Admin;
-import cn.fjlcx.office.bean.Result;
+import cn.fjlcx.office.bean.HttpResult;
 import cn.fjlcx.office.bean.User;
-import cn.fjlcx.office.global.MemoryData;
 import cn.fjlcx.office.service.AdminService;
 import cn.fjlcx.office.service.UserService;
-import cn.fjlcx.office.utils.MD5Util;
-import cn.fjlcx.office.utils.StringRandom;
-import io.swagger.annotations.ApiOperation;
 
 /**
  * Created by lcx on 2017/6/28.
@@ -38,13 +32,16 @@ class CommonController {
 	AdminService mAdminService;
 	@Autowired
 	UserService mUserService;
+/*
 
-	/**
+	*/
+/**
 	 * 跳转至登陆页面
 	 * @param model
 	 * @return
 	 * @throws IOException
-	 */
+	 *//*
+
 
 	@RequestMapping(value = "login", method = {RequestMethod.GET })
 	public String login(Model model,String msg) throws IOException {
@@ -56,11 +53,13 @@ class CommonController {
 		return "login";
 	}
 
+*/
 /**
 	 * 管理员登录
 	 * @param
 	 * @return
-	 */
+	 *//*
+
 
 	@ResponseBody
 	@RequestMapping(value = "admin/admin_login" , method = {RequestMethod.POST } )
@@ -114,6 +113,7 @@ class CommonController {
 	public String home(){
 		return "admin/home";
 	}
+*/
 
 	/**
 	 * 用户列表
@@ -121,13 +121,12 @@ class CommonController {
 	 * @param model
 	 * @return
 	 */
-	@ApiOperation(value="获取用户列表", notes="")
 	@RequestMapping(value = "userlist",method=RequestMethod.GET)
 	@ResponseBody
 	public Object userList(@RequestParam(value = "pn",defaultValue = "1")Integer pn,Model model){
 		PageHelper.startPage(pn,5);
 		List<User> list = mUserService.selectAllUser();
 		PageInfo page = new PageInfo(list,5);
-		return Result.success().add("list",page);
+		return HttpResult.success().addResult(page);
 	}
 }

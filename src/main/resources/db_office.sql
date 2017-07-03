@@ -2,21 +2,21 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost_3306
-Source Server Version : 50718
+Source Server Version : 50519
 Source Host           : localhost:3306
 Source Database       : db_office
 
 Target Server Type    : MYSQL
-Target Server Version : 50718
+Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2017-07-02 23:39:13
+Date: 2017-07-03 17:09:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for oa_admin
+-- Table structure for `oa_admin`
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_admin`;
 CREATE TABLE `oa_admin` (
@@ -38,7 +38,7 @@ CREATE TABLE `oa_admin` (
 INSERT INTO `oa_admin` VALUES ('1', 'admin', '40f5888b67c748df7efba008e7c2f9d2', 'admin', '1', '1', '2017-06-29 19:27:23', '192.168.3.27', '2017-06-29 19:27:33');
 
 -- ----------------------------
--- Table structure for oa_notepad
+-- Table structure for `oa_notepad`
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_notepad`;
 CREATE TABLE `oa_notepad` (
@@ -53,9 +53,34 @@ CREATE TABLE `oa_notepad` (
 -- ----------------------------
 -- Records of oa_notepad
 -- ----------------------------
+INSERT INTO `oa_notepad` VALUES ('1', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('2', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('3', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('4', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('5', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('6', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('7', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('8', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('9', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('10', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('11', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('12', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('13', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('14', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('15', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('16', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('17', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('18', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('19', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('20', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('21', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('22', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('23', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('24', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
+INSERT INTO `oa_notepad` VALUES ('25', 'lingcx', '2017-07-03 10:08:55', '2017-07-03 10:08:57', '0');
 
 -- ----------------------------
--- Table structure for oa_user
+-- Table structure for `oa_user`
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_user`;
 CREATE TABLE `oa_user` (
@@ -69,7 +94,7 @@ CREATE TABLE `oa_user` (
   `us_mail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `us_address` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `us_state` int(11) NOT NULL COMMENT '0：正常\r\n1：禁用',
-  `us_registdate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `us_registdate` datetime DEFAULT NULL,
   PRIMARY KEY (`us_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

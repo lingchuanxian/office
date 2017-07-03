@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.fjlcx.office.bean.Admin;
-import cn.fjlcx.office.bean.Result;
+import cn.fjlcx.office.bean.HttpResult;
 import cn.fjlcx.office.global.MemoryData;
 
 /**
@@ -48,7 +48,7 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 						&& request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){
 					response.setHeader("sessionstatus","timeout");
 					PrintWriter out = response.getWriter();
-					out.write(Result.fail().toString());
+					out.write(HttpResult.fail().toString());
 					out.flush();
 					out.close();
 					return false;

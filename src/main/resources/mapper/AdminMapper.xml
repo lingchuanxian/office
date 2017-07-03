@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.fjlcx.office.dao.AdminDao" >
 
-  <resultMap type="cn.fjlcx.office.bean.Admin" id="BaseResultMap">
+  <resultMap type="cn.fjlcx.office.bean.Admin" id="BaseAdminResultMap">
     <result column="ad_id" property="adId"/>
     <result column="ad_loginname" property="adLoginname"/>
     <result column="ad_name" property="adName"/>
@@ -13,7 +13,7 @@
     <result column="ad_adddate" property="adAdddate"/>
   </resultMap>
 
-  <select id="adminLogin" parameterType="cn.fjlcx.office.bean.Admin" resultMap="BaseResultMap">
+  <select id="adminLogin" parameterType="cn.fjlcx.office.bean.Admin" resultMap="BaseAdminResultMap">
     SELECT * FROM oa_admin WHERE ad_loginname = #{adLoginname} AND ad_pwd = #{adPwd}
   </select>
 
