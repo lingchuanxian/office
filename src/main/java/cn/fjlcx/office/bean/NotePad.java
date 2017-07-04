@@ -1,7 +1,6 @@
 package cn.fjlcx.office.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by lcx on 2017/7/2 0002.
@@ -9,9 +8,10 @@ import java.util.Date;
 
 public class NotePad implements Serializable {
     private int npId;
+    private String npTitle;
     private String npContent;
-    private Date npAdddate;
-    private Date npUpdatedate;
+    private long npAdddate;
+    private long npUpdatedate;
     private int npState;
 
     public int getNpId() {
@@ -22,6 +22,14 @@ public class NotePad implements Serializable {
         this.npId = npId;
     }
 
+    public String getNpTitle() {
+        return npTitle;
+    }
+
+    public void setNpTitle(String npTitle) {
+        this.npTitle = npTitle;
+    }
+
     public String getNpContent() {
         return npContent;
     }
@@ -30,19 +38,19 @@ public class NotePad implements Serializable {
         this.npContent = npContent;
     }
 
-    public Date getNpAdddate() {
+    public long getNpAdddate() {
         return npAdddate;
     }
 
-    public void setNpAdddate(Date npAdddate) {
+    public void setNpAdddate(long npAdddate) {
         this.npAdddate = npAdddate;
     }
 
-    public Date getNpUpdatedate() {
+    public long getNpUpdatedate() {
         return npUpdatedate;
     }
 
-    public void setNpUpdatedate(Date npUpdatedate) {
+    public void setNpUpdatedate(long npUpdatedate) {
         this.npUpdatedate = npUpdatedate;
     }
 
@@ -54,8 +62,9 @@ public class NotePad implements Serializable {
         this.npState = npState;
     }
 
-    public NotePad(int npId, String npContent, Date npAdddate, Date npUpdatedate, int npState) {
+    public NotePad(int npId,String npTitle, String npContent, long npAdddate, long npUpdatedate, int npState) {
         this.npId = npId;
+        this.npTitle = npTitle;
         this.npContent = npContent;
         this.npAdddate = npAdddate;
         this.npUpdatedate = npUpdatedate;

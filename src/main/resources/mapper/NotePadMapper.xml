@@ -4,6 +4,7 @@
 
   <resultMap type="cn.fjlcx.office.bean.NotePad" id="BaseNotePadResultMap">
     <result column="np_id" property="npId"/>
+    <result column="np_title" property="npTitle"/>
     <result column="np_content" property="npContent"/>
     <result column="np_adddate" property="npAdddate"/>
     <result column="np_updatedate" property="npUpdatedate"/>
