@@ -73,4 +73,16 @@ public class NotePad implements Serializable {
 
     public NotePad() {
     }
+
+    @Override
+    public String toString() {
+        return "NotePad{" +
+                "npId=" + npId +
+                ", npTitle='" + npTitle + '\'' +
+                ", npContent='" + npContent + '\'' +
+                ", npAdddate=" + npAdddate +
+                ", npUpdatedate=" + npUpdatedate +
+                ", npState=" + npState +
+                '}';
+    }
 }

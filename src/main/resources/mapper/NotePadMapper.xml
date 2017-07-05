@@ -32,7 +32,7 @@
   </delete>
 
   <update id="updateNotePad" parameterType="cn.fjlcx.office.bean.NotePad">
-    UPDATE oa_notepad SET np_content = #{npContent},np_updatedate=#{npUpdatedate} WHERE np_id=#{npId}
+    UPDATE oa_notepad SET np_title = #{npTitle},np_content = #{npContent},np_updatedate=#{npUpdatedate} WHERE np_id=#{npId}
   </update>
 
   <update id="setNotePadToTop" parameterType="cn.fjlcx.office.bean.NotePad">

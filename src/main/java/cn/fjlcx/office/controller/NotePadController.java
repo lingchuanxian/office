@@ -2,6 +2,7 @@ package cn.fjlcx.office.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,5 +32,17 @@ public class NotePadController {
 		List<NotePad> list = mNotePadService.selectNotePadByPager(pageBean);
 		pageBean.setList(list);
 		return HttpResult.success().addResult(pageBean);
+	}
+
+	@RequestMapping(value = "updateNotePad",method= RequestMethod.POST)
+	@ResponseBody
+	public HttpResult updateNotePad(@RequestBody NotePad notePad){
+		System.out.println("submit-str:"+notePad.toString());
+		int val = mNotePadService.updateNotePad(notePad);
+		if(val == 1){
+			return HttpResult.success().addResult("");
+		}else{
+			return HttpResult.fail();
+		}
 	}
 }
