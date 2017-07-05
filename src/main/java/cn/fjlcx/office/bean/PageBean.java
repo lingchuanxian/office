@@ -48,7 +48,7 @@ public class PageBean<T> {
 	 * @return
 	 */
 	public Integer countStart(Integer currentPage,Integer pageLine){
-		int start = (currentPage - 1)*pageLine + 1;
+		int start = (currentPage - 1)*pageLine;
 		return start;
 	}
 	/**

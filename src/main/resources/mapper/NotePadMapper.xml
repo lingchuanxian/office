@@ -20,7 +20,7 @@
   </select>
 
   <select id="selectNotePadByPager" parameterType="cn.fjlcx.office.bean.PageBean" resultMap="BaseNotePadResultMap">
-    SELECT * from oa_notepad limit #{start},#{pageLine}
+    SELECT * from oa_notepad ORDER BY np_updatedate DESC limit #{start},#{pageLine}
   </select>
 
   <select id="selectNotePadById" parameterType="int" resultMap="BaseNotePadResultMap">

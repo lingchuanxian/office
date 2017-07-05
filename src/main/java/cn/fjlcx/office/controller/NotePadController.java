@@ -37,7 +37,7 @@ public class NotePadController {
 	@RequestMapping(value = "updateNotePad",method= RequestMethod.POST)
 	@ResponseBody
 	public HttpResult updateNotePad(@RequestBody NotePad notePad){
-		System.out.println("submit-str:"+notePad.toString());
+		notePad.setNpUpdatedate(System.currentTimeMillis());
 		int val = mNotePadService.updateNotePad(notePad);
 		if(val == 1){
 			return HttpResult.success().addResult("");

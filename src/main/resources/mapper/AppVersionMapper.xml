@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.fjlcx.office.dao.AppVersionDao" >
+
+  <resultMap type="cn.fjlcx.office.bean.AppVersion" id="BaseAppVersionResultMap">
+    <result column="av_id" property="avId"/>
+    <result column="av_code" property="avCode"/>
+    <result column="av_forceupdate" property="avForceUpdate"/>
+    <result column="av_url" property="avUrl"/>
+    <result column="av_pushdate" property="avPushdate"/>
+  </resultMap>
+
+    <insert id="insertAppVersion" parameterType="cn.fjlcx.office.bean.AppVersion">
+        INSERT INTO oa_appversion(av_code,av_forceupdate,av_pushdate,av_url)
+        VALUES (#{avCode},#{avForceupdate},#{avPushdate},#{avUrl})
+    </insert>
+
+    <select id="countAllAppVersion" resultType="int">
+        SELECT COUNT(*) FROM oa_appversion
+    </select>
+
+    <select id="selectAppVersionByPager" parameterType="cn.fjlcx.office.bean.PageBean" resultMap="BaseAppVersionResultMap">
+        SELECT * from oa_appversion ORDER BY av_pushdate DESC limit #{start},#{pageLine}
+    </select>
+
+    <select id="selectAppVersionById" parameterType="int" resultMap="BaseAppVersionResultMap">
+         SELECT * from oa_appversion WHERE av_id = #{avId}
+    </select>
+
+    <delete id="deleteAppVersionById" parameterType="int">
+        DELETE FROM oa_appversion WHERE av_id = #{avId}
+    </delete>
+
+    <update id="updateAppVersion" parameterType="cn.fjlcx.office.bean.AppVersion">
+        UPDATE oa_appversion SET av_code=#{avCode} ,av_url = #{avUrl},av_forceupdate = #{avForceUpdate} WHERE av_id = #{avId}
+    </update>
+
+    <select id="selectAppVersionIdMax" resultMap="BaseAppVersionResultMap">
+        SELECT * FROM oa_appversion WHERE av_id =
+        (SELECT MAX(av_id) FROM oa_appversion )
+    </select>
+
+</mapper>
