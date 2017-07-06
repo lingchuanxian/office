@@ -7,7 +7,7 @@
     <result column="av_code" property="avCode"/>
     <result column="av_forceupdate" property="avForceUpdate"/>
     <result column="av_url" property="avUrl"/>
-    <result column="av_pushdate" property="avPushdate"/>
+    <result column="av_pushdate" property="avPushDate"/>
   </resultMap>
 
     <insert id="insertAppVersion" parameterType="cn.fjlcx.office.bean.AppVersion">

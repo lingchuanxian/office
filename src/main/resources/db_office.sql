@@ -71,7 +71,7 @@ CREATE TABLE `oa_notepad` (
 -- ----------------------------
 -- Records of oa_notepad
 -- ----------------------------
-INSERT INTO `oa_notepad` VALUES ('1', '这是标题啊bb', 'lingcx', '1499047735000', '1499249934931', '0');
+INSERT INTO `oa_notepad` VALUES ('100', '这是标题啊bb', 'lingcx', '1499047735000', '1499249934931', '0');
 INSERT INTO `oa_notepad` VALUES ('2', '这是标题啊nn', 'lingcxhh', '1499047735000', '0', '0');
 INSERT INTO `oa_notepad` VALUES ('3', '1829', 'lingcx', '1499047735000', '1499250618235', '0');
 INSERT INTO `oa_notepad` VALUES ('4', '1828', 'lingcx', '1499047735000', '1499250538267', '0');

@@ -12,7 +12,7 @@
   </resultMap>
 
   <insert id="insertNotePad" parameterType="cn.fjlcx.office.bean.NotePad">
-    INSERT INTO oa_notepad(np_content,np_adddate,np_updatedate,np_state) values(${np_content},#{np_adddate},#{np_updatedate},#{np_state})
+    INSERT INTO oa_notepad(np_title,np_content,np_adddate,np_updatedate,np_state) values(#{npTitle},#{npContent},#{npAdddate},#{npUpdatedate},#{npState})
   </insert>
 
   <select id="countAllNotePad" resultType="int">

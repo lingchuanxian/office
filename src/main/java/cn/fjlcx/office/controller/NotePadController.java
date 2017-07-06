@@ -38,9 +38,27 @@ public class NotePadController {
 	@ResponseBody
 	public HttpResult updateNotePad(@RequestBody NotePad notePad){
 		notePad.setNpUpdatedate(System.currentTimeMillis());
-		int val = mNotePadService.updateNotePad(notePad);
+		int val = 0;
+		if(notePad.getNpId()==0){
+			notePad.setNpAdddate(System.currentTimeMillis());
+			notePad.setNpState(0);
+			val = mNotePadService.insertNotePad(notePad);
+		}else{
+			val = mNotePadService.updateNotePad(notePad);
+		}
 		if(val == 1){
 			return HttpResult.success().addResult("");
+		}else{
+			return HttpResult.fail();
+		}
+	}
+
+	@RequestMapping(value = "deleteNotePad",method= RequestMethod.GET)
+	@ResponseBody
+	public HttpResult deleteNotePad(@RequestParam(value = "npId", required=true)Integer npId){
+		int val = mNotePadService.deleteNotePadById(npId);
+		if(val==1){
+			return HttpResult.success();
 		}else{
 			return HttpResult.fail();
 		}
