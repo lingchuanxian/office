@@ -67,7 +67,7 @@
                 <li class="nav-li last-nav-li">
                     <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">系统管理</span></a>
                     <ul class="subnav">
-                        <li class="subnav-li" data-id="13"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">App版本管理</span></a></li>
+                        <li class="subnav-li" href="admin/appversion/getAppVersionAll.shtml" data-id="13"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">App版本管理</span></a></li>
                         <li class="subnav-li" data-id="14"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">系统操作日志</span></a></li>
                         <li class="subnav-li" data-id="15"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">反馈意见</span></a></li>
                     </ul>

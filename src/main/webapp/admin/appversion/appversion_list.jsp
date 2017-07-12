@@ -124,35 +124,32 @@
                         <tr>
                             <th class="text-center"><input type="checkbox"/></th>
                             <th class="text-center">ID</th>
-                            <th class="text-center">标题</th>
-                            <th class="text-center">内容</th>
-                            <th class="text-center">更新时间</th>
+                            <th class="text-center">版本号</th>
+                            <th class="text-center">强制升级</th>
+                            <th class="text-center">下载地址</th>
+                            <th class="text-center">发布日期</th>
                             <th class="text-center">操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${page.list }" var="note">
+                            <c:forEach items="${page.list }" var="version">
                                 <tr>
                                     <td class="text-center"><input type="checkbox"/></td>
-                                    <td class="text-center">${note.npId}</td>
-                                    <td class="text-center">${note.npTitle}</td>
+                                    <td class="text-center">${version.avId}</td>
+                                    <td class="text-center">${version.avCode}</td>
                                     <td class="text-center">
-                                        <c:choose>
-                                            <c:when test="${fn:length(note.npContent) > 50}">
-                                                <c:out value="${fn:substring(note.npContent, 0, 50)}......" />
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value="${note.npContent}" />
-                                            </c:otherwise>
-                                        </c:choose>
+                                        <c:if test="${version.avForceUpdate ==0}"><font>否</font></c:if>
+                                        <c:if test="${version.avForceUpdate ==1}"><font color="red">是</font></c:if>
+                                    </td>
+                                    <td class="text-center">
+                                        ${version.avUrl}
                                     </td>
                                     <td class="text-center">
                                         <jsp:useBean id="dateValue" class="java.util.Date"/>
-                                        <jsp:setProperty name="dateValue" property="time" value="${note.npUpdatedate}"/>
+                                        <jsp:setProperty name="dateValue" property="time" value="${version.avPushDate}"/>
                                         <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd HH:mm"/>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-info btn-sm" onclick="preview(${note.npId})"><span class="glyphicon glyphicon-search"></span> 预览</button>
                                         <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> 编辑</button>
                                         <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> 删除</button>
                                     </td>

@@ -14,12 +14,16 @@
 	<!-- 默认的注解映射的支持 -->
 	<mvc:annotation-driven />
 	<!--配置拦截器, 多个拦截器,顺序执行 -->
-	<!--<mvc:interceptors>
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="cn.fjlcx.office.interceptor.LogInterceptor"/>
+		</mvc:interceptor>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<bean class="cn.fjlcx.office.interceptor.SingleUserInterceptor"/>
 		</mvc:interceptor>
-	</mvc:interceptors>-->
+	</mvc:interceptors>
 	<!--&lt;!&ndash;避免IE执行AJAX时，返回JSON出现下载文件 &ndash;&gt;
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
