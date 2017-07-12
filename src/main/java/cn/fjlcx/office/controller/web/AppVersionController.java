@@ -1,4 +1,4 @@
-package cn.fjlcx.office.controller;
+package cn.fjlcx.office.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

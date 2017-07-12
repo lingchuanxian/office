@@ -1,4 +1,4 @@
-package cn.fjlcx.office.controller;
+package cn.fjlcx.office.controller.webservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +19,8 @@ import cn.fjlcx.office.service.NotePadService;
  * Created by lcx on 2017/7/2 0002.
  */
 @Controller
-@RequestMapping("notepad")
-public class NotePadController {
+@RequestMapping("webservice/notepad")
+public class NotePadInterface {
 	@Autowired
 	NotePadService mNotePadService;
 
@@ -49,7 +49,7 @@ public class NotePadController {
 		if(val == 1){
 			return HttpResult.success().addResult("");
 		}else{
-			return HttpResult.fail();
+			return HttpResult.fail(101,"操作失败");
 		}
 	}
 
@@ -60,7 +60,7 @@ public class NotePadController {
 		if(val==1){
 			return HttpResult.success();
 		}else{
-			return HttpResult.fail();
+			return HttpResult.fail(102,"删除失败");
 		}
 	}
 }

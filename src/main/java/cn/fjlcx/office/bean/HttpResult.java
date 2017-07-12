@@ -40,10 +40,10 @@ public class HttpResult<T> {
 		return httpResult;
 	}
 
-	public static HttpResult fail(){
+	public static HttpResult fail(int code,String msg){
 		httpResult = new HttpResult();
-		httpResult.setCode(101);
-		httpResult.setMsg("fail");
+		httpResult.setCode(code);
+		httpResult.setMsg(msg);
 		return httpResult;
 	}
 

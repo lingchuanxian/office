@@ -48,7 +48,7 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 						&& request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){
 					response.setHeader("sessionstatus","timeout");
 					PrintWriter out = response.getWriter();
-					out.write(HttpResult.fail().toString());
+					out.write(HttpResult.fail(106,"ajax访问").toString());
 					out.flush();
 					out.close();
 					return false;

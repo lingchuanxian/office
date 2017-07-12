@@ -23,9 +23,9 @@ $(function () {
                     layer.closeAll('loading');
                     var obj = eval(data1);
                     if(obj.code!=100){
-                        layer.msg(obj.description);
+                        layer.msg(obj.msg);
                     }else{
-                        layer.msg(obj.description);
+                        layer.msg(obj.msg);
                         setTimeout("location.href='index.shtml'", 1500);
                     }
                 }
@@ -42,4 +42,17 @@ $(function () {
             //取消
         });
     });
+
+
 });
+
+function preview(npId) {
+    layer.open({
+        type: 2,
+        title:"预览",
+        area: ['800px', '600px'],
+        fixed: false, //不固定
+        maxmin: true,
+        content: 'admin/notepad/showNotePad.shtml?npId='+npId
+    });
+}
