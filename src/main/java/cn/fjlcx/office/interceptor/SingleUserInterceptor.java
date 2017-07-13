@@ -45,13 +45,13 @@ public class SingleUserInterceptor implements HandlerInterceptor {
 			}else{ //如果请求的sessionID和此账号Map中存放的sessionID不一致，跳转到登陆页
 				//判断如果是异步请求，设置响应头 sessionstatus为timeout，自动跳转，否则重定向
 				if(request.getHeader("x-requested-with")!=null
-						&& request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){
-					response.setHeader("sessionstatus","timeout");
-					PrintWriter out = response.getWriter();
-					out.write(HttpResult.fail(106,"ajax访问").toString());
-					out.flush();
-					out.close();
-					return false;
+							&& request.getHeader("x-requested-with").equalsIgnoreCase("XMLHttpRequest")){
+						response.setHeader("sessionstatus","timeout");
+						PrintWriter out = response.getWriter();
+						out.write(HttpResult.fail(106,"ajax访问").toString());
+						out.flush();
+						out.close();
+						return false;
 				}else{
 					String indexUrl=request.getContextPath()+"/login.shtml?msg=您的账号已在其他地方登录";
 					request.getRequestDispatcher(indexUrl).forward(request, response);

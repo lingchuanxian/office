@@ -80,6 +80,7 @@
                 <div class="search-button">
                     <input class="button" type="button" value="搜索一下" />
                 </div>
+                <button type="button" class="btn btn-primary right" id="refresh"><span class="glyphicon glyphicon-refresh"></span></button>
             </div>
 
             <div class="table">
@@ -168,7 +169,7 @@
                                 <li><a href="admin/notepad/getNotePads.shtml?currentPage=1">首页</a></li>
                                 <li><a href="admin/notepad/getNotePads.shtml?currentPage=${page.currentPage-1}">上一页</a></li>
                             </c:if>
-                              &nbsp;&nbsp;当前 ${page.currentPage} / ${page.pageNum} 页&nbsp;&nbsp;
+                              &nbsp;&nbsp;当前 ${page.currentPage} / ${page.pageNum} 页&nbsp;&nbsp;(共${page.totalCount}条记录)
                             <c:if test="${page.currentPage==page.pageNum}">
                                 <li class="disabled"><a href="javascript:;">下一页</a></li>
                                 <li class="disabled"><a href="javascript:;">末页</a></li>

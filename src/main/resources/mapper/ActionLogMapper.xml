@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.fjlcx.office.dao.ActionLogDao" >
+
+  <resultMap type="cn.fjlcx.office.bean.ActionLog" id="BaseActionLogResultMap">
+    <result column="al_id" property="alId"/>
+    <result column="al_controller" property="alController"/>
+    <result column="al_method" property="alMethod"/>
+    <result column="al_params" property="alParams"/>
+    <result column="al_uri" property="alUri"/>
+    <result column="al_costtime" property="alCostTime"/>
+    <result column="al_date" property="alDate"/>
+    <association column="al_adminid" property="admin"  select="getActionAdmin">
+
+    </association>
+  </resultMap>
+
+  <resultMap type="cn.fjlcx.office.bean.Admin" id="BaseAdminResultMap">
+    <result column="ad_id" property="adId"/>
+    <result column="ad_loginname" property="adLoginname"/>
+    <result column="ad_name" property="adName"/>
+    <result column="ad_type" property="adType"/>
+    <result column="ad_state" property="adState"/>
+    <result column="ad_lastlogindate" property="adLastlogindate"/>
+    <result column="ad_lastloginip" property="adLastloginip"/>
+    <result column="ad_adddate" property="adAdddate"/>
+  </resultMap>
+
+  <select id="getActionAdmin" parameterType="int" resultMap="BaseAdminResultMap">
+    SELECT * FROM oa_admin WHERE ad_id = #{al_adminid}
+  </select>
+
+  <insert id="insertActionLog" parameterType="cn.fjlcx.office.bean.ActionLog">
+    INSERT INTO oa_actionlog(al_controller,al_adminid,al_method,al_params,al_uri,al_costtime,al_date)
+    VALUES (#{alController},#{alAdminId},#{alMethod},#{alParams},#{alUri},#{alCostTime},#{alDate})
+  </insert>
+
+  <select id="countActionLog" resultType="int">
+    SELECT count(*) FROM oa_actionlog
+  </select>
+
+  <select id="selectActionLogByPager" resultMap="BaseActionLogResultMap">
+    SELECT * FROM oa_actionlog ORDER BY al_date DESC limit #{start},#{pageLine}
+  </select>
+
+
+</mapper>

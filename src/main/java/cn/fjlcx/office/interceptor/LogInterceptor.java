@@ -1,5 +1,6 @@
 package cn.fjlcx.office.interceptor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -9,8 +10,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cn.fjlcx.office.bean.ActionLog;
+import cn.fjlcx.office.bean.Admin;
+import cn.fjlcx.office.service.ActionLogService;
 
 /**
  *
@@ -19,7 +23,10 @@ import cn.fjlcx.office.bean.ActionLog;
  */
 
 public class LogInterceptor implements HandlerInterceptor {
-
+	@Autowired
+	HttpSession session;
+	@Autowired
+	ActionLogService mActionLogService;
 	ActionLog al = new ActionLog();
 	public boolean preHandle(HttpServletRequest request,
 							 HttpServletResponse response, Object handler) throws Exception {
@@ -42,6 +49,10 @@ public class LogInterceptor implements HandlerInterceptor {
 			sb.append("URI       : ").append(request.getRequestURI()).append("\n");
 			System.out.println(sb.toString());
 		}
+		Admin admin = (Admin) session.getAttribute("admin_login_account");
+		if(admin!=null){
+			al.setAlAdminId(admin.getAdId());
+		}
 		return true;
 	}
 
@@ -54,6 +65,8 @@ public class LogInterceptor implements HandlerInterceptor {
 			al.setAlCostTime(executeTime);
 			System.out.println(sb.toString());
 		}
+		al.setAlDate(System.currentTimeMillis());
+		mActionLogService.insertActionLog(al);
 	}
 
 	private String getParamString(Map<String, String[]> map) {

@@ -125,35 +125,34 @@
                         <tr>
                             <th class="text-center"><input type="checkbox"/></th>
                             <th class="text-center">ID</th>
-                            <th class="text-center">标题</th>
-                            <th class="text-center">内容</th>
-                            <th class="text-center">更新时间</th>
+                            <th class="text-center">操作用户</th>
+                            <th class="text-center">Controller</th>
+                            <th class="text-center">方法名</th>
+                            <th class="text-center">参数</th>
+                            <th class="text-center">URL地址</th>
+                            <th class="text-center">请求耗时(ms)</th>
+                            <th class="text-center">请求时间</th>
                             <th class="text-center">操作</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items="${page.list }" var="note">
+                            <c:forEach items="${page.list }" var="log">
                                 <tr>
                                     <td class="text-center"><input type="checkbox"/></td>
-                                    <td class="text-center">${note.npId}</td>
-                                    <td class="text-center">${note.npTitle}</td>
-                                    <td class="text-center">
-                                        <c:choose>
-                                            <c:when test="${fn:length(note.npContent) > 50}">
-                                                <c:out value="${fn:substring(note.npContent, 0, 50)}......" />
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value="${note.npContent}" />
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
+                                    <td class="text-center">${log.alId}</td>
+                                    <td class="text-center">${log.admin.adName}</td>
+                                    <td class="text-center">${log.alController}</td>
+                                    <td class="text-center">${log.alMethod}</td>
+                                    <td class="text-center">${log.alParams}</td>
+                                    <td class="text-center">${log.alUri}</td>
+                                    <td class="text-center">${log.alCostTime}</td>
                                     <td class="text-center">
                                         <jsp:useBean id="dateValue" class="java.util.Date"/>
-                                        <jsp:setProperty name="dateValue" property="time" value="${note.npUpdatedate}"/>
+                                        <jsp:setProperty name="dateValue" property="time" value="${log.alDate}"/>
                                         <fmt:formatDate value="${dateValue}" pattern="yyyy-MM-dd HH:mm"/>
                                     </td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-info btn-sm" onclick="preview(${note.npId})"><span class="glyphicon glyphicon-search"></span> 预览</button>
+                                        <button type="button" class="btn btn-info btn-sm" onclick=""><span class="glyphicon glyphicon-search"></span> 预览</button>
                                         <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-pencil"></span> 编辑</button>
                                         <button type="button" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> 删除</button>
                                     </td>
@@ -169,8 +168,8 @@
                                 <li class="disabled"><a href="javascript:;">上一页</a></li>
                             </c:if>
                             <c:if test="${page.currentPage!=1}">
-                                <li><a href="admin/notepad/getNotePads.shtml?currentPage=1">首页</a></li>
-                                <li><a href="admin/notepad/getNotePads.shtml?currentPage=${page.currentPage-1}">上一页</a></li>
+                                <li><a href="admin/actionlog/getActionLog.shtml?currentPage=1">首页</a></li>
+                                <li><a href="admin/actionlog/getActionLog.shtml?currentPage=${page.currentPage-1}">上一页</a></li>
                             </c:if>
                               &nbsp;&nbsp;当前 ${page.currentPage} / ${page.pageNum} 页&nbsp;&nbsp;(共${page.totalCount}条记录)
                             <c:if test="${page.currentPage==page.pageNum}">
@@ -178,8 +177,8 @@
                                 <li class="disabled"><a href="javascript:;">末页</a></li>
                             </c:if>
                             <c:if test="${page.currentPage!=page.pageNum}">
-                                <li><a href="admin/notepad/getNotePads.shtml?currentPage=${page.currentPage+1}">下一页</a></li>
-                                <li><a href="admin/notepad/getNotePads.shtml?currentPage=${page.pageNum}">末页</a></li>
+                                <li><a href="admin/actionlog/getActionLog.shtml?currentPage=${page.currentPage+1}">下一页</a></li>
+                                <li><a href="admin/actionlog/getActionLog.shtml?currentPage=${page.pageNum}">末页</a></li>
                             </c:if>
                         </ul>
                     </nav>

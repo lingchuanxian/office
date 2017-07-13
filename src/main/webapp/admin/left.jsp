@@ -26,7 +26,7 @@
             <h2><a href="javascript:;"><i class="h2-icon"></i><span>菜单</span></a></h2>
             <ul class="nav">
                 <li class="nav-li current">
-                    <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">个人设置</span></a>
+                    <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">我的主页</span></a>
                     <ul class="subnav">
                         <li class="subnav-li current" href="home.shtml" data-id="1"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">我的主页</span></a></li>
                        <%-- <li class="subnav-li" href="form.html" data-id="9"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">新闻频道管理</span></a></li>
@@ -68,7 +68,7 @@
                     <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">系统管理</span></a>
                     <ul class="subnav">
                         <li class="subnav-li" href="admin/appversion/getAppVersionAll.shtml" data-id="13"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">App版本管理</span></a></li>
-                        <li class="subnav-li" data-id="14"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">系统操作日志</span></a></li>
+                        <li class="subnav-li" href="admin/actionlog/getActionLog.shtml" data-id="14"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">系统操作日志</span></a></li>
                         <li class="subnav-li" data-id="15"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">反馈意见</span></a></li>
                     </ul>
                 </li>

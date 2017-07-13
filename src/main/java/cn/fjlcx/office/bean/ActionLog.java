@@ -6,12 +6,30 @@ package cn.fjlcx.office.bean;
 
 public class ActionLog {
 	private int alId;
+	private int alAdminId;
 	private String alController;
 	private String alMethod;
 	private String alParams;
 	private String alUri;
 	private long alCostTime;
 	private long alDate;
+	private Admin admin;
+
+	public int getAlAdminId() {
+		return alAdminId;
+	}
+
+	public void setAlAdminId(int alAdminId) {
+		this.alAdminId = alAdminId;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
 	public int getAlId() {
 		return alId;
@@ -72,13 +90,15 @@ public class ActionLog {
 	public ActionLog() {
 	}
 
-	public ActionLog(int alId, String alController, String alMethod, String alParams, String alUri, long alCostTime, long alDate) {
+	public ActionLog(int alId, int alAdminId, String alController, String alMethod, String alParams, String alUri, long alCostTime, long alDate, Admin admin) {
 		this.alId = alId;
+		this.alAdminId = alAdminId;
 		this.alController = alController;
 		this.alMethod = alMethod;
 		this.alParams = alParams;
 		this.alUri = alUri;
 		this.alCostTime = alCostTime;
 		this.alDate = alDate;
+		this.admin = admin;
 	}
 }

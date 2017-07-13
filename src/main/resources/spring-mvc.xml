@@ -20,7 +20,7 @@
 			<bean class="cn.fjlcx.office.interceptor.LogInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
+			<mvc:mapping path="admin/**"/>
 			<bean class="cn.fjlcx.office.interceptor.SingleUserInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

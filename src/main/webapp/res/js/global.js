@@ -43,6 +43,9 @@ $(function () {
         });
     });
 
+    $("#refresh").click(function(){
+        document.location.reload();
+    });
 
 });
 

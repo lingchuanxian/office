@@ -10,10 +10,30 @@ Target Server Type    : MYSQL
 Target Server Version : 50519
 File Encoding         : 65001
 
-Date: 2017-07-12 17:31:25
+Date: 2017-07-13 14:12:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `oa_actionlog`
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_actionlog`;
+CREATE TABLE `oa_actionlog` (
+  `al_id` int(11) NOT NULL AUTO_INCREMENT,
+  `al_adminid` int(11),
+  `al_controller` varchar(255) NOT NULL,
+  `al_method` varchar(255) NOT NULL,
+  `al_params` varchar(255) DEFAULT NULL,
+  `al_uri` varchar(255) DEFAULT NULL,
+  `al_costtime` bigint(20) DEFAULT NULL,
+  `al_date` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`al_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_actionlog
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `oa_admin`
@@ -53,7 +73,7 @@ CREATE TABLE `oa_appversion` (
 -- ----------------------------
 -- Records of oa_appversion
 -- ----------------------------
-INSERT INTO `oa_appversion` VALUES ('1', '1', '1', 'http://www.baidu.com', '1499047735000');
+INSERT INTO `oa_appversion` VALUES ('1', '1.2.3', '1', 'http://www.baidu.com', '1499047735000');
 
 -- ----------------------------
 -- Table structure for `oa_notepad`
