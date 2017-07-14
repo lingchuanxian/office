@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <base href="${pageContext.request.contextPath}">
+    <base href="${pageContext.request.contextPath}/">
     <title>Title</title>
     <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
     <script type="text/javascript" src="res/js/jquery-1.11.3.min.js"></script>
