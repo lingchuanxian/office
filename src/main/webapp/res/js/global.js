@@ -44,7 +44,16 @@ $(function () {
     });
 
     $("#refresh").click(function(){
-        document.location.reload();
+        location.replace(location.href);
+    });
+
+    $("#appversion_add").click(function(){
+        layer.open({
+            type: 2,
+            title:"添加APP新版本",
+            area: ['600px', '500px'],
+            content: 'admin/appversion/appversion_add.jsp'
+        });
     });
 
 });
