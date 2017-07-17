@@ -21,10 +21,12 @@ public class PageBean<T> {
 	public PageBean(Integer totalCount,Integer pageLine,Integer currentPage){
 		this.totalCount = totalCount;
 		this.pageLine = ((null == pageLine) ? 10 : pageLine);//(默认10条记录)
-		this.pageNum = this.countPageNum(this.getTotalCount(),this.getPageLine());
-		this.currentPage = ((null == currentPage) ? 1 : ((currentPage > this.getPageNum()) ? this.getPageNum() : (currentPage <= 0) ? 1: currentPage));//默认第1页,如果大于了最大页数，那么就展示末页
-		this.start = this.countStart(this.getCurrentPage(),this.getPageLine());
-		this.end = this.countEnd(this.getCurrentPage(),this.getPageLine());
+		this.pageNum = this.countPageNum(totalCount,pageLine);
+
+		this.currentPage = this.countCurrentPage(currentPage,this.pageNum);
+		//this.currentPage = ((null == currentPage) ? 1 : ((currentPage > this.getPageNum()) ? this.getPageNum() : ((currentPage <= 0) ? 1: currentPage)));//默认第1页,如果大于了最大页数，那么就展示末页
+		this.start = this.countStart(this.currentPage,this.getPageLine());
+		this.end = this.countEnd(this.currentPage,this.getPageLine());
 	}
 	/**
 	 * 计算分页总数
@@ -33,13 +35,16 @@ public class PageBean<T> {
 	 * @return
 	 */
 	public Integer countPageNum(Integer totalCount,Integer pageLine){
-		int pageNum;
-		if(totalCount%pageLine > 0){
-			pageNum = totalCount/pageLine + 1;
-		}else{
-			pageNum = totalCount/pageLine;
+		return  (totalCount  +  pageLine  - 1) / pageLine;
+	}
+
+	public Integer countCurrentPage(Integer currentPage,Integer pageNum){
+		if(null == currentPage || currentPage <= 0){
+			currentPage = 1;
+		}else if(currentPage > pageNum){
+			currentPage = pageNum;
 		}
-		return pageNum;
+		return currentPage;
 	}
 	/**
 	 * 计算查询起始点

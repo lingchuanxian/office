@@ -159,6 +159,7 @@
                     </table>
 
                     <nav aria-label="">
+                        ${page.currentPage}
                         <ul class="pager">
                             <c:if test="${page.currentPage==1}">
                                 <li class="disabled"><a href="javascript:;">首页</a></li>
