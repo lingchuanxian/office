@@ -35,4 +35,5 @@ public class StringRandom {
 		}
 		return val;
 	}
+
 }

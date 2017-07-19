@@ -16,64 +16,20 @@ public class PageBean<T> {
 	private Integer end;//查询结束点
 
 	private List<T> list;//查询的结果封装集合
-	PageBean(){
+	public PageBean(){
 	}
-	public PageBean(Integer totalCount,Integer pageLine,Integer currentPage){
+
+	public PageBean(Integer totalCount, Integer pageLine, Integer currentPage, Integer pageNum, Integer start, Integer end, List<T> list) {
 		this.totalCount = totalCount;
-		this.pageLine = ((null == pageLine) ? 10 : pageLine);//(默认10条记录)
-		this.pageNum = this.countPageNum(totalCount,pageLine);
-
-		this.currentPage = this.countCurrentPage(currentPage,this.pageNum);
-		//this.currentPage = ((null == currentPage) ? 1 : ((currentPage > this.getPageNum()) ? this.getPageNum() : ((currentPage <= 0) ? 1: currentPage)));//默认第1页,如果大于了最大页数，那么就展示末页
-		this.start = this.countStart(this.currentPage,this.getPageLine());
-		this.end = this.countEnd(this.currentPage,this.getPageLine());
-	}
-	/**
-	 * 计算分页总数
-	 * @param totalCount --总记录数
-	 * @param pageLine --每页记录数
-	 * @return
-	 */
-	public Integer countPageNum(Integer totalCount,Integer pageLine){
-		return  (totalCount  +  pageLine  - 1) / pageLine;
+		this.pageLine = pageLine;
+		this.currentPage = currentPage;
+		this.pageNum = pageNum;
+		this.start = start;
+		this.end = end;
+		this.list = list;
 	}
 
-	public Integer countCurrentPage(Integer currentPage,Integer pageNum){
-		if(null == currentPage || currentPage <= 0){
-			currentPage = 1;
-		}else if(currentPage > pageNum){
-			currentPage = pageNum;
-		}
-		return currentPage;
-	}
-	/**
-	 * 计算查询起始点
-	 * @param currentPage --当前页码
-	 * @param pageLine --每页记录数
-	 * @return
-	 */
-	public Integer countStart(Integer currentPage,Integer pageLine){
-		int start = (currentPage - 1)*pageLine;
-		return start;
-	}
-	/**
-	 * 计算查询结束点
-	 * @param currentPage --当前页码
-	 * @param pageLine --每页记录数
-	 * @return
-	 */
-	public Integer countEnd(Integer currentPage,Integer pageLine){
-		//非末页时的结束查询点
-		int end = currentPage * pageLine;
-		if(currentPage == this.getPageNum()){
-			int remainder = this.getTotalCount() % pageLine;
-			if(remainder > 0){
-				//最后一页剩余的记录数（包括只有1页的情况）
-				end = (currentPage - 1) * pageLine + remainder;
-			}
-		}
-		return end;
-	}
+
 	public Integer getTotalCount() {
 		return totalCount;
 	}

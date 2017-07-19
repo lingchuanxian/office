@@ -14,6 +14,7 @@ import java.util.Map;
 import cn.fjlcx.office.bean.ActionLog;
 import cn.fjlcx.office.bean.PageBean;
 import cn.fjlcx.office.service.ActionLogService;
+import cn.fjlcx.office.utils.PageBeanUtil;
 
 /**
  * Created by lcx on 2017/7/13.
@@ -28,7 +29,7 @@ public class ActionLogController {
 	public String getActionLog(@RequestParam(value = "currentPage", required=true,defaultValue="1")Integer currentPage , Model model){
 		Map<String,Object> map = new HashMap<>();
 		int count = mActionLogService.countActionLog(map);
-		PageBean<ActionLog> pageBean =new PageBean(count,10,currentPage);
+		PageBean<ActionLog> pageBean = PageBeanUtil.setPageBean(count,10,currentPage);
 		map.put("start",pageBean.getStart());
 		map.put("pageLine",pageBean.getPageLine());
 		List<ActionLog> list = mActionLogService.selectActionLogByPager(map);

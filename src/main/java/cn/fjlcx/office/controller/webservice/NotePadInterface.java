@@ -14,6 +14,7 @@ import cn.fjlcx.office.bean.HttpResult;
 import cn.fjlcx.office.bean.NotePad;
 import cn.fjlcx.office.bean.PageBean;
 import cn.fjlcx.office.service.NotePadService;
+import cn.fjlcx.office.utils.PageBeanUtil;
 
 /**
  * Created by lcx on 2017/7/2 0002.
@@ -28,7 +29,7 @@ public class NotePadInterface {
 	@ResponseBody
 	public HttpResult getNotePad(@RequestParam(value = "currentPage", required=true,defaultValue="1")Integer currentPage){
 		int count = mNotePadService.countAllNotePad();
-		PageBean<NotePad> pageBean =new PageBean(count,10,currentPage);
+		PageBean<NotePad> pageBean = PageBeanUtil.setPageBean(count,10,currentPage);
 		List<NotePad> list = mNotePadService.selectNotePadByPager(pageBean);
 		pageBean.setList(list);
 		return HttpResult.success().addResult(pageBean);

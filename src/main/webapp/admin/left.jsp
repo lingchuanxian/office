@@ -43,7 +43,7 @@
                     <a href="javascript:;" class="ue-clear"><i class="nav-ivon"></i><span class="nav-text">日志管理</span></a>
                     <ul class="subnav">
                         <li class="subnav-li" href="admin/notepad/getNotePads.shtml" data-id="2"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">日志列表</span></a></li>
-                        <li class="subnav-li" href="admin/notepad/getNotePads.shtml" data-id="4"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">新增日志</span></a></li>
+                        <li class="subnav-li" href="admin/notepad/toAddNotePad.shtml" data-id="4"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">新增日志</span></a></li>
                         <%--                        <li class="subnav-li" href="form.html" data-id="2"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">表单</span></a></li>
                                                 <li class="subnav-li" href="table.html" data-id="3"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">表格</span></a></li>
                                                 <li class="subnav-li" data-id="4"><a href="javascript:;" class="ue-clear"><i class="subnav-icon"></i><span class="subnav-text">自定义设置2</span></a></li>--%>

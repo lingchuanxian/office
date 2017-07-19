@@ -94,23 +94,9 @@
                         <i class="card"></i>
                     </span>
                     <span class="optarea">
-                        <a href="javascript:;" class="add">
-                            <i class="icon"></i>
-                            <span class="text">添加</span>
-                        </a>
-                        <a href="javascript:;" class="delete">
-                            <i class="icon"></i>
-                            <span class="text">删除</span>
-                        </a>
-
                         <a href="javascript:;" class="statistics">
                             <i class="icon"></i>
                             <span class="text">统计</span>
-                        </a>
-
-                        <a href="javascript:;" class="config">
-                            <i class="icon"></i>
-                            <span class="text">配置</span>
                         </a>
                     </span>
                 </div>
@@ -128,6 +114,7 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <c:if test="${(page.list)!= null && fn:length(page.list) > 0}">
                             <c:forEach items="${page.list }" var="note">
                                 <tr>
                                     <td class="text-center"><input type="checkbox"/></td>
@@ -155,11 +142,16 @@
                                     </td>
                                 </tr>
                             </c:forEach>
+                        </c:if>
+                        <c:if test="${(page.list)!= null && fn:length(page.list) == 0}">
+                            <tr>
+                                <td colspan="6" class="text-center" style="color:#FF0000;">暂无记录</td>
+                            </tr>
+                        </c:if>
                         </tbody>
                     </table>
 
                     <nav aria-label="">
-                        ${page.currentPage}
                         <ul class="pager">
                             <c:if test="${page.currentPage==1}">
                                 <li class="disabled"><a href="javascript:;">首页</a></li>
