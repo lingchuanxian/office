@@ -23,4 +23,9 @@ class UserServiceImpl implements UserService {
 	public User selectUserById(int us_id) {
 		return mUserDao.selectUserById(us_id);
 	}
+
+	@Override
+	public User userLogin(User user) {
+		return mUserDao.userLogin(user);
+	}
 }

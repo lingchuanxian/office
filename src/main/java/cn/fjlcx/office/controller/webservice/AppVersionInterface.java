@@ -23,6 +23,6 @@ public class AppVersionInterface {
 	@ResponseBody
 	public HttpResult getLastVersion(){
 		AppVersion appVersion = mAppVersionService.selectAppVersionIdMax();
-		return HttpResult.success().addResult(appVersion);
+		return HttpResult.setReturnCode(100).addResult(appVersion);
 	}
 }

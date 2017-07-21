@@ -11,4 +11,5 @@ import cn.fjlcx.office.bean.User;
 public interface UserService {
 	List<User> selectAllUser();
 	User selectUserById(int us_id);
+	User userLogin(User user);
 }

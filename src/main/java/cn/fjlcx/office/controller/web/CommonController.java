@@ -69,24 +69,25 @@ class CommonController {
 		HttpResult result;
 		String ss_code = session.getAttribute("admin_login_code").toString().toLowerCase();
 		if (ss_code.equals("")){
-			result = HttpResult.fail(103,"验证码失效，请刷新后重试");
+			result = HttpResult.setReturnCode(103);
 		}else if(!ss_code.equals(admin.getAdName().toLowerCase())){
-			result = HttpResult.fail(104,"验证码输入有误");
+			result = HttpResult.setReturnCode(104);
 		}else{
 			admin.setAdPwd(MD5Util.MD5(MD5Util.MD5(MD5Util.MD5(admin.getAdPwd()))));
 			Admin loginAdmin = mAdminService.adminLogin(admin);
 			if(loginAdmin!=null){
 				session.setAttribute("admin_login_account",loginAdmin);
 				String sessionID = session.getId();
+				System.out.println("SessionID:"+sessionID);
 				if (!MemoryData.getSessionIDMap().containsKey(loginAdmin.getAdId())) { //不存在，首次登陆，放入Map
 					MemoryData.getSessionIDMap().put(loginAdmin.getAdId(),sessionID);
 				}else if(MemoryData.getSessionIDMap().containsKey(loginAdmin.getAdId())&&!MemoryData.getSessionIDMap().get(loginAdmin.getAdId()).equals(sessionID)){
 					MemoryData.getSessionIDMap().remove(loginAdmin.getAdId());
 					MemoryData.getSessionIDMap().put(loginAdmin.getAdId(), sessionID);
 				}
-				result = HttpResult.success().addResult(loginAdmin);
+				result = HttpResult.setReturnCode(100).addResult(loginAdmin);
 			}else{
-				result = HttpResult.fail(105,"用户名或密码有误");
+				result = HttpResult.setReturnCode(101);
 			}
 		}
 		System.out.println("result:"+result.toString());
@@ -128,6 +129,6 @@ class CommonController {
 		PageHelper.startPage(pn,5);
 		List<User> list = mUserService.selectAllUser();
 		PageInfo page = new PageInfo(list,5);
-		return HttpResult.success().addResult(page);
+		return HttpResult.setReturnCode(100).addResult(page);
 	}
 }

@@ -12,4 +12,5 @@ import cn.fjlcx.office.bean.User;
 public interface UserDao {
 	List<User> selectAllUser();
 	User selectUserById(int us_id);
+	User userLogin(User user);
 }

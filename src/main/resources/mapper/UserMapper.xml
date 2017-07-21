@@ -23,4 +23,8 @@
     SELECT * FROM oa_user WHERE us_id = #{us_id}
   </select>
 
+  <select id="userLogin" parameterType="cn.fjlcx.office.bean.User" resultMap="BaseUserResultMap">
+    SELECT * FROM oa_user WHERE us_loginname=#{usLoginname} AND us_pwd = #{usPwd}
+  </select>
+
 </mapper>

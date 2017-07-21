@@ -23,6 +23,10 @@
 			<mvc:mapping path="admin/**"/>
 			<bean class="cn.fjlcx.office.interceptor.SingleUserInterceptor"/>
 		</mvc:interceptor>
+		<!--<mvc:interceptor>
+			<mvc:mapping path="webservice/**"/>
+			<bean class="cn.fjlcx.office.interceptor.AuthTokenInterceptor"/>
+		</mvc:interceptor>-->
 	</mvc:interceptors>
 	<!--&lt;!&ndash;避免IE执行AJAX时，返回JSON出现下载文件 &ndash;&gt;
 	<bean id="mappingJacksonHttpMessageConverter"

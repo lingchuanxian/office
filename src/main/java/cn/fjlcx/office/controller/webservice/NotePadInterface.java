@@ -32,7 +32,7 @@ public class NotePadInterface {
 		PageBean<NotePad> pageBean = PageBeanUtil.setPageBean(count,10,currentPage);
 		List<NotePad> list = mNotePadService.selectNotePadByPager(pageBean);
 		pageBean.setList(list);
-		return HttpResult.success().addResult(pageBean);
+		return HttpResult.setReturnCode(100).addResult(pageBean);
 	}
 
 	@RequestMapping(value = "updateNotePad",method= RequestMethod.POST)
@@ -48,9 +48,9 @@ public class NotePadInterface {
 			val = mNotePadService.updateNotePad(notePad);
 		}
 		if(val == 1){
-			return HttpResult.success().addResult("");
+			return HttpResult.setReturnCode(100).addResult("");
 		}else{
-			return HttpResult.fail(101,"操作失败");
+			return HttpResult.setReturnCode(102);
 		}
 	}
 
@@ -59,9 +59,9 @@ public class NotePadInterface {
 	public HttpResult deleteNotePad(@RequestParam(value = "npId", required=true)Integer npId){
 		int val = mNotePadService.deleteNotePadById(npId);
 		if(val==1){
-			return HttpResult.success();
+			return HttpResult.setReturnCode(100);
 		}else{
-			return HttpResult.fail(102,"删除失败");
+			return HttpResult.setReturnCode(102);
 		}
 	}
 }

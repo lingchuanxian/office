@@ -1,6 +1,8 @@
 session:
     admin_login_code:后台登陆验证码
-    admin_login_account:后台登陆账号
+    admin_login_account:后台登陆账号信息
+
+    user_login_account:用户登录账号信息
 
 
 Shiro整合SpringMVC并且实现权限管理，登录和注销
